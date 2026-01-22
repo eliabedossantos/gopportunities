@@ -16,11 +16,14 @@ type Product struct {
 }
 
 func initializeRoutes(router *gin.Engine) {
+	//initialize handler
+	handler.InitializeHandler()
+
 	//Group creates a new router group. You should add all the routes that have common middlewares or the same path prefix. For example, all the routes that use a common middleware for authorization could be grouped.
 	v1 := router.Group("/api/v1")
 
 	v1.GET("/openings", handler.ListOpeningsHandler)
-	v1.POST("/opening", handler.ShowOpeningHandler)
+	v1.POST("/opening", handler.CreateOpeningHandler)
 	v1.DELETE("/opening", handler.DeleteOpeningHandler)
 	v1.PUT("/opening", handler.UpdateOpeningHandler)
 	v1.GET("/opening", handler.ShowOpeningHandler)
